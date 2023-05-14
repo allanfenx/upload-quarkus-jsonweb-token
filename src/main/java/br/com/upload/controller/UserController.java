@@ -2,7 +2,6 @@ package br.com.upload.controller;
 
 
 import br.com.upload.dto.AuthDto;
-import br.com.upload.dto.TokenDto;
 import br.com.upload.dto.UserDto;
 import br.com.upload.service.UserService;
 
@@ -40,7 +39,7 @@ public class UserController {
     public Response auth(AuthDto dto){
 
         try {
-            TokenDto result = service.auth(dto);
+            String result = service.auth(dto);
 
             return  Response.ok(result).build();
         }catch (RuntimeException e){

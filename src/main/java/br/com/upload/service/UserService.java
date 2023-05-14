@@ -1,7 +1,6 @@
 package br.com.upload.service;
 
 import br.com.upload.dto.AuthDto;
-import br.com.upload.dto.TokenDto;
 import br.com.upload.dto.UserDto;
 import br.com.upload.entity.User;
 import br.com.upload.repository.UserRepository;
@@ -38,7 +37,7 @@ public class UserService {
         return  "User created success";
     }
 
-    public TokenDto auth(AuthDto dto){
+    public String auth(AuthDto dto){
 
        User user = repository.find("email", dto.getEmail()).firstResult();
 
@@ -50,9 +49,9 @@ public class UserService {
             throw new RuntimeException("Credentials invalid");
         }
 
-        return new TokenDto( Jwt.issuer(issuer)
+        return  Jwt.issuer(issuer)
                 .upn(dto.getEmail())
                 .groups("User")
-                .sign());
+                .sign();
     }
 }
