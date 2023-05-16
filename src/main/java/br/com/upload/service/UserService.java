@@ -50,8 +50,9 @@ public class UserService {
         }
 
         return  Jwt.issuer(issuer)
-                .upn(dto.getEmail())
+                .subject(dto.getEmail())
                 .groups("User")
+                .expiresIn(60 * 60 *2)
                 .sign();
     }
 }
