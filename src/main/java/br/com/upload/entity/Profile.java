@@ -2,11 +2,11 @@ package br.com.upload.entity;
 
 import java.util.Date;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+import jakarta.persistence.Table;
 
 @Entity
 @Table(name = "profiles")
@@ -19,6 +19,10 @@ public class Profile {
     private String originalName;
 
     private String KeyName;
+
+    private String title;
+
+    private String category;
 
     private String mimetype;
 
@@ -36,6 +40,22 @@ public class Profile {
 
     public String getKeyName() {
         return KeyName;
+    }
+
+    public void setTitle(String title) {
+        this.title = title;
+    }
+
+    public String getTitle() {
+        return title;
+    }
+
+    public void setCategory(String category) {
+        this.category = category;
+    }
+
+    public String getCategory() {
+        return category;
     }
 
     public String getMimetype() {

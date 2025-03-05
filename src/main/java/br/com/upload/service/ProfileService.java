@@ -9,11 +9,9 @@ import java.util.List;
 import java.util.Optional;
 import java.util.UUID;
 
-import javax.enterprise.context.ApplicationScoped;
-import javax.inject.Inject;
-import javax.transaction.Transactional;
-
-import org.eclipse.microprofile.config.inject.ConfigProperty;
+import jakarta.enterprise.context.ApplicationScoped;
+import jakarta.inject.Inject;
+import jakarta.transaction.Transactional;
 
 import br.com.upload.entity.FormData;
 import br.com.upload.entity.Profile;
@@ -22,8 +20,7 @@ import br.com.upload.repository.ProfileRepository;
 @ApplicationScoped
 public class ProfileService {
 
-    @ConfigProperty(name = "quarkus.http.body.uploads-directory")
-    String directory;
+    String directory = System.getProperty("user.dir") + "/src/main/resources/META-INF/resources/uploads/";
 
     @Inject
     ProfileRepository repository;
@@ -63,6 +60,10 @@ public class ProfileService {
         String fileName = UUID.randomUUID() + "-" + data.getFile().fileName();
 
         profile.setOriginalName(data.getFile().fileName());
+
+        profile.setTitle(data.getTitle());
+
+        profile.setCategory(data.getCategory());
 
         profile.setKeyName(fileName);
 

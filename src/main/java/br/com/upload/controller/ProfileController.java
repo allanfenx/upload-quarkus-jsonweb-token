@@ -3,19 +3,11 @@ package br.com.upload.controller;
 import java.io.IOException;
 import java.util.List;
 
-import javax.annotation.security.RolesAllowed;
-import javax.inject.Inject;
-import javax.ws.rs.Consumes;
-import javax.ws.rs.DELETE;
-import javax.ws.rs.GET;
-import javax.ws.rs.POST;
-import javax.ws.rs.Path;
-import javax.ws.rs.PathParam;
-import javax.ws.rs.Produces;
-import javax.ws.rs.core.MediaType;
-import javax.ws.rs.core.Response;
-
-import org.jboss.resteasy.reactive.MultipartForm;
+import jakarta.inject.Inject;
+import jakarta.ws.rs.*;
+import jakarta.ws.rs.core.MediaType;
+import jakarta.ws.rs.core.Response;
+import jakarta.annotation.security.RolesAllowed;
 
 import br.com.upload.entity.FormData;
 import br.com.upload.entity.Profile;
@@ -54,7 +46,7 @@ public class ProfileController {
 
     @POST
     @RolesAllowed("User")
-    public Response sendUpload(@MultipartForm FormData data) {
+    public Response sendUpload(@BeanParam FormData data) {
 
         try {
             Profile profile = service.sendUpload(data);

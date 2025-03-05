@@ -8,6 +8,20 @@ public class FormData {
     @RestForm("file")
     private FileUpload file;
 
+    @RestForm("title")
+    private String title;
+
+    @RestForm("category")
+    private String category;
+
+    public String getTitle() {
+        return title;
+    }
+
+    public String getCategory() {
+        return category;
+    }
+
     public FileUpload getFile() {
         return file;
     }

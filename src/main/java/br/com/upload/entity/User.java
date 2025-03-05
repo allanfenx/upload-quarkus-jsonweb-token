@@ -1,6 +1,6 @@
 package br.com.upload.entity;
 
-import javax.persistence.*;
+import jakarta.persistence.*;
 
 @Entity
 @Table(name = "users")

@@ -1,17 +1,9 @@
 package br.com.upload.controller;
 
-import javax.inject.Inject;
-import javax.ws.rs.Consumes;
-import javax.ws.rs.DELETE;
-import javax.ws.rs.GET;
-import javax.ws.rs.POST;
-import javax.ws.rs.Path;
-import javax.ws.rs.PathParam;
-import javax.ws.rs.Produces;
-import javax.ws.rs.core.MediaType;
-import javax.ws.rs.core.Response;
-
-import org.jboss.resteasy.reactive.MultipartForm;
+import jakarta.inject.Inject;
+import jakarta.ws.rs.*;
+import jakarta.ws.rs.core.MediaType;
+import jakarta.ws.rs.core.Response;
 
 import br.com.upload.entity.FormData;
 import br.com.upload.entity.Profile;
@@ -48,7 +40,7 @@ public class S3Controller {
     }
 
     @POST
-    public Response sendS3(@MultipartForm FormData data) {
+    public Response sendS3(@BeanParam FormData data) {
 
         try {
             Profile profile = service.sendS3(data);
